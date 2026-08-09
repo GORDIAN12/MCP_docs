@@ -57,4 +57,4 @@ USER ${USERNAME}
 EXPOSE 8080
 
 # Start Playwright MCP
-ENTRYPOINT ["sh", "-c", "node /app/cli.js --headless --browser chromium --no-sandbox --host 0.0.0.0 --port ${PORT}"]
+ENTRYPOINT ["sh", "-c", "node /app/cli.js --headless --browser chromium --no-sandbox --host 0.0.0.0 --port ${PORT} --allowed-hosts '*'"]
