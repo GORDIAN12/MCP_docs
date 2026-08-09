@@ -62,6 +62,7 @@ COPY --chown=${USERNAME}:${USERNAME} cli.js package.json ./
 
 # Current working directory must be writable as MCP may need to create default output dir in it.
 WORKDIR /home/${USERNAME}
+EXPOSE 8080
 
 # Run in headless and only with chromium (other browsers need more dependencies not included in this image)
-ENTRYPOINT ["node", "/app/cli.js", "--headless", "--browser", "chromium", "--no-sandbox"]
+ENTRYPOINT ["sh", "-c", "node /app/cli.js --headless --browser chromium --no-sandbox --host 0.0.0.0 --port ${PORT}"]
